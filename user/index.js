@@ -8,4 +8,4 @@ User.prototype.hello = function(who){
     console.log(phrases.Hello + ", " + who.name);
 };
 
-exports.User = User;
+module.exports = User;
