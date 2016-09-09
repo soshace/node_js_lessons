@@ -1,3 +1,5 @@
+var db = require('./db');
+
 var User = require('./user');
 
 function run() {
@@ -5,6 +7,8 @@ function run() {
     var tom = new User("Tom");
 
     tim.hello(tom);
+
+    console.log(db.getPhrase("Run successful"));
 }
 
 if (module.parent) {
