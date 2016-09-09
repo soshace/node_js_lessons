@@ -1,4 +1,4 @@
-require('./user');
+var user = require('./user');
 
 var tim = new user.User("Tim");
 var tom = new user.User("Tom");

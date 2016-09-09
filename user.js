@@ -7,3 +7,5 @@ User.prototype.hello = function(who){
 };
 
 console.log("user.js is required!");
+
+exports.User = User;
