@@ -9,4 +9,4 @@ var obj = {
 };
 obj.self = obj;
 
-console.log( util.inspect(obj) );
+console.log(obj);
