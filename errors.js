@@ -7,6 +7,7 @@ var phrases = {
 // message name stack
 function PhraseError(message) {
     this.message = message;
+    Error.captureStackTrace(this, PhraseError);
 }
 util.inherits(PhraseError, Error);
 PhraseError.prototype.name = 'PhraseError';
@@ -15,6 +16,7 @@ PhraseError.prototype.name = 'PhraseError';
 function HttpError(status, message) {
     this.status = status;
     this.message = message;
+    Error.captureStackTrace(this, HttpError);
 }
 util.inherits(HttpError, Error);
 HttpError.prototype.name = 'HttpError';
@@ -31,11 +33,11 @@ function makePage(url) {
     if (url != 'index.html') {
         throw new HttpError(404, "There is no such a page");
     }
-    return util.format("%s, %s!", getPhrase("Hell"), getPhrase("world"));
+    return util.format("%s, %s!", getPhrase("*****"), getPhrase("world"));
 }
 
 try {
-    var page = makePage('index');
+    var page = makePage('index.html');
     console.log(page);
 } catch (e) {
     if (e instanceof HttpError) {
