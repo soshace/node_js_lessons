@@ -1,6 +1,7 @@
 var EventEmitter = require('events').EventEmitter;
 
 var db = new EventEmitter();
+db.setMaxListeners(0);
 
 function Request() {
     var self = this;
