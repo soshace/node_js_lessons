@@ -6,8 +6,9 @@ var EventEmitter = require('events').EventEmitter;
 
 var server = new EventEmitter;
 
-server.on('error', function() {
-    
+server.on('error', function(err) {
+    //..
+
 });
 
-server.emit('error');
+server.emit('error', new Error ("server error"));
