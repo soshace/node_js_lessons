@@ -1,3 +1,7 @@
+var EventEmitter = require('events').EventEmitter;
+
+var db = new EventEmitter();
+
 function Request() {
     var self = this;
 
@@ -7,9 +11,9 @@ function Request() {
         console.log(data);
     };
 
-    this.onError = function(data) {
-        self.send("sorry, we have a problem");
-    };
+    db.on('data', function(info) {
+        self.send(info);
+    });
 }
 
 setInterval(function() {
