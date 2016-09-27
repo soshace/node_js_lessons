@@ -16,3 +16,4 @@ server.on('request', function(req, res) {
 });
 
 server.listen(1337);
+console.log("Server is running");
