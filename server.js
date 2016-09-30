@@ -5,9 +5,10 @@ http.createServer(function(req, res) {
     var info;
 
     if (req.url == '/') {
+         fs.readFile('index.html', function (err, info) { // callback
 
-        info = fs.readFileSync('index.html');
-        res.end(info);
+            res.end('');
+        });
 
     }
 
