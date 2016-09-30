@@ -1,11 +1,14 @@
 var http = require('http');
-var log = require('winston');
+var fs = require('fs');
 
-var server = http.createServer();
+http.createServer(function(req, res) {
+    var info;
 
-server.on('request', require('./request'));
+    if (req.url == '/') {
 
-server.listen(1337);
+        info = fs.readFileSync('index.html');
+        res.end(info);
 
-log.debug("Server is running");
+    }
 
+}).listen(3000);
