@@ -7,8 +7,10 @@ var server = new http.Server(function(req, res) {
 }).listen(3000);
 
 setTimeout(function() {
-    server.close();
-}, 2500);
+    server.close(function () {
+        process.exit();
+    });
+},2500);
 
 setInterval(function() {
     console.log(process.memoryUsage());
