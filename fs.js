@@ -5,7 +5,12 @@ var stream = new fs.ReadStream("big.html");
 
 stream.on('readable', function() {
     var data = stream.read();
-    console.log(data);
+    if (data){
+        console.log(data.length);
+    }
+    else {
+        console.log('data is null')
+    }
 });
 
 stream.on('end', function() {
