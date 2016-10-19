@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 // fs.ReadStream nherits from stream.Readable
-var stream = new fs.ReadStream("big.html");
+var stream = new fs.ReadStream("noFile.html");
 
 stream.on('readable', function() {
     var data = stream.read();
@@ -13,7 +13,10 @@ stream.on('readable', function() {
     }
 });
 
-stream.on('end', function() {
-    console.log("THE END");
+stream.on('error', function(err) {
+    if (err.code == 'ENOENT') {
+        console.log("File not Found");
+    } else {
+        console.error(err);
+    }
 });
-
