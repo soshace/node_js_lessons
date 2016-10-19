@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 // fs.ReadStream nherits from stream.Readable
-var stream = new fs.ReadStream(__filename, {encoding: 'utf-8'});
+var stream = new fs.ReadStream("big.html");
 
 stream.on('readable', function() {
     var data = stream.read();
