@@ -14,23 +14,6 @@ new http.Server(function(req, res) {
 
 function sendFile(file, res) {
 
-    file.on('readable', write);
-
-    function write() {
-        var fileContent = file.read(); // read
-
-        if (fileContent && !res.write(fileContent)) { // send
-
-            file.removeListener('readable', write);
-
-            res.once('drain', function() { //wait
-                file.on('readable', write);
-                write();
-            });
-        }
-    }
-    file.on('end', function() {
-        res.end();
-    });
+    file.pipe(res);
 
 }
