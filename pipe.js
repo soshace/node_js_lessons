@@ -17,8 +17,20 @@ function sendFile(file, res) {
     file.on('readable', write);
 
     function write() {
-        var fileContent = file.read();
+        var fileContent = file.read(); // read
 
-        res.write(fileContent);
+        if (fileContent && !res.write(fileContent)) { // send
+
+            file.removeListener('readable', write);
+
+            res.once('drain', function() { //wait
+                file.on('readable', write);
+                write();
+            });
+        }
     }
+    file.on('end', function() {
+        res.end();
+    });
+
 }
