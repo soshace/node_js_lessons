@@ -12,13 +12,27 @@ http.createServer(function(req, res) {
 
         case '/subscribe':
             chat.subscribe(req, res);
-            //..
             break;
 
         case '/publish':
-            chat.publish('....');
-            //..
+            var body = '';
+
+            req
+                .on('readable', function() {
+                    var chunk = req.read();
+                    if (chunk !== null) {
+                        body += chunk;
+                    }
+                })
+                .on('end', function() {
+                    body = JSON.parse(body);
+
+                    chat.publish(body.message);
+                    res.end("ok");
+                });
+
             break;
+
 
         default:
             res.statusCode = 404;
