@@ -23,10 +23,21 @@ http.createServer(function(req, res) {
                     if (chunk !== null) {
                         body += chunk;
                     }
+                    if (body.length > 1000) {
+                        res.statusCode = 413;
+                        res.end("Your message is too big for my little chat");
+                    }
                 })
                 .on('end', function() {
-                    body = JSON.parse(body);
+                    if (res.statusCode === 413) return;
 
+                    try {
+                        body = JSON.parse(body);
+                    } catch (e) {
+                        res.statusCode = 400;
+                        res.end("Bad Request");
+                        return;
+                    }
                     chat.publish(body.message);
                     res.end("ok");
                 });
