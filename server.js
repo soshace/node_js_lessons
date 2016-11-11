@@ -4,9 +4,10 @@ var fs = require('fs');
 function handler(req, res) {
     if (req.url == '/') {
 
-        fs.readFile('index.html', function(err, content) {
+        fs.readFile('no-such-file', function(err, content) {
 
-            if (err) throw err;
+            if (err) throw err; // JSON.parse("invalid!")
+
             res.end(content);
         });
 
@@ -17,11 +18,5 @@ function handler(req, res) {
 
 }
 
-var server = new http.createServer(function (req, res) {
-    try {
-        handler(req, res);
-    } catch(err) {
-        //error!
-    }
-});
-server.listen(3000);
+var server = new http.createServer(handler);
+module.exports = server;
