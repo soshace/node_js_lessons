@@ -5,12 +5,8 @@ function handler(req, res) {
     if (req.url == '/') {
 
         fs.readFile('index.html', function(err, content) {
-            if (err) {
-                console.error(err);
-                res.statusCode = 500;
-                res.end('There is an error on the server');
-                return
-            }
+
+            if (err) throw err;
             res.end(content);
         });
 
@@ -21,5 +17,11 @@ function handler(req, res) {
 
 }
 
-var server = new http.createServer(handler);
+var server = new http.createServer(function (req, res) {
+    try {
+        handler(req, res);
+    } catch(err) {
+        //error!
+    }
+});
 server.listen(3000);
