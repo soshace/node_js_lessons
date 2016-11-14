@@ -8,8 +8,8 @@ d.on('error', function(err) {
 
 d.run(function() {
     // d.enter();
-
-        setTimeout(function() {
+    console.error(process.domain);
+    setTimeout(function() {
             ERROR();
         }, 1000);
 
