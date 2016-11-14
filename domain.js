@@ -7,7 +7,12 @@ d.on('error', function(err) {
 });
 
 d.run(function() {
+    // d.enter();
 
-    ERROR();
+        setTimeout(function() {
+            ERROR();
+        }, 1000);
+
+    //d.exit();
 });
 
