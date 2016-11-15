@@ -7,9 +7,13 @@ d.on('error', function(err) {
     console.error("Domain has caught %s", err);
 });
 
+server = new http.Server();
+
 d.run(function() {
 
-    server = new http.Server();
+    d.add(server);
+
+    console.log(server.domain);
 
 });
 
