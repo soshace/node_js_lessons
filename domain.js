@@ -7,12 +7,13 @@ d.on('error', function(err) {
 });
 
 d.run(function() {
-    // d.enter();
-    console.error(process.domain);
+
     setTimeout(function() {
-            ERROR();
+      fs.readFile(__filename, function() {
+          ERROR();
+      });
         }, 1000);
 
-    //d.exit();
+
 });
 
