@@ -1,11 +1,11 @@
-// node server.js port=3000
+// supervisor -- server.js --port=3000
 
 var http = require('http');
 
-console.log(require('optimist').argv);
+var opts = require('optimist').argv;
 
 http.createServer(function(req, res) {
 
     res.end("The server is running!");
 
-}).listen(3000);
+}).listen(opts.port);
