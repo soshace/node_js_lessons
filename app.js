@@ -9,6 +9,30 @@ http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
 
+// Middleware
+app.use(function(req, res, next) {
+  if (req.url == '/') {
+    res.end("Hello");
+  } else {
+    next();
+  }
+});
+
+app.use(function(req, res, next) {
+  if (req.url == '/test') {
+    res.end("Test");
+  } else {
+    next();
+  }
+});
+
+app.use(function(req, res) {
+  res.send(404, "Page Not Found Sorry");
+});
+
+
+
+
 // var routes = require('./routes');
 // var user = require('./routes/user');
 //
