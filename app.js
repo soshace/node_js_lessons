@@ -19,6 +19,15 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
+  if (req.url == '/error') {
+    BLABLA()
+  } else {
+    next();
+  }
+});
+
+
+app.use(function(req, res, next) {
   if (req.url == '/test') {
     res.end("Test");
   } else {
