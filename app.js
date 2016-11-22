@@ -19,13 +19,12 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(req, res, next) {
-  if (req.url == '/error') {
-    BLABLA()
+  if (req.url == '/forbidden') {
+    next(new Error("wops, denied"));
   } else {
     next();
   }
 });
-
 
 app.use(function(req, res, next) {
   if (req.url == '/test') {
@@ -39,7 +38,15 @@ app.use(function(req, res) {
   res.send(404, "Page Not Found Sorry");
 });
 
-
+app.use(function(err, req, res, next) {
+  // NODE_ENV = 'production'
+  if (app.get('env') == 'development') {
+    var errorHandler = express.errorHandler();
+    errorHandler(err, req, res, next);
+  } else {
+    res.send(500);
+  }
+});
 
 
 // var routes = require('./routes');
@@ -58,12 +65,7 @@ app.use(function(req, res) {
 // app.use(express.session());
 // app.use(app.router);
 // app.use(express.static(path.join(__dirname, 'public')));
-//
-// // development only
-// if ('development' == app.get('env')) {
-//   app.use(express.errorHandler());
-// }
-//
+
 // app.get('/', routes.index);
 // app.get('/users', user.list);
 //
