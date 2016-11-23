@@ -9,10 +9,14 @@ var app = express();
 app.set('views', __dirname + '/templates');
 app.set('view engine', 'ejs');
 
-app.use(express.favicon());
-app.use(express.logger('dev'));
+app.use(express.favicon()); // /favicon.ico
+if (app.get('env') == 'development') {
+  app.use(express.logger('dev'));
+} else {
+  app.use(express.logger('default'));
+}
+
 app.use(express.bodyParser());
-app.use(express.methodOverride());
 app.use(express.cookieParser('your secret here'));
 app.use(express.session());
 app.use(app.router);
