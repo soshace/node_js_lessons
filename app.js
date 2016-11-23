@@ -17,9 +17,14 @@ if (app.get('env') == 'development') {
 }
 
 app.use(express.bodyParser());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
+app.use(express.cookieParser());
+
 app.use(app.router);
+
+app.get('/', function(req, res, next) {
+  res.end("Test")
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(err, req, res, next) {
