@@ -6,6 +6,8 @@ var log = require('libs/log')(module);
 
 
 var app = express();
+
+app.engine('ejs', require('ejs-locals'));
 app.set('views', __dirname + '/templates');
 app.set('view engine', 'ejs');
 
