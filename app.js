@@ -22,8 +22,11 @@ app.use(express.cookieParser());
 app.use(app.router);
 
 app.get('/', function(req, res, next) {
-  res.end("Test")
+  res.render("index", {
+    body: '<b>Hello</b>'
+  });
 });
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
