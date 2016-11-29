@@ -32,6 +32,7 @@ app.get('/', function(req, res, next) {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use(function(err, req, res, next) {
   // NODE_ENV = 'production'
   if (app.get('env') == 'development') {
