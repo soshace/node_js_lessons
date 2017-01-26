@@ -6,7 +6,7 @@ http.createServer(function(req, res) {
 
     if (req.url == '/') {
 
-        fs.readFileSync('index.html', function(err, info) {
+        fs.readFile('index.html', function(err, info) {
             if(err) {
                 console.error(err);
                 res.statusCode = 500;
