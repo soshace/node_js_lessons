@@ -1,0 +1,19 @@
+{
+  "name": "node_js_lessons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soshace/node_js_lessons.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/soshace/node_js_lessons/issues"
+  },
+  "homepage": "https://github.com/soshace/node_js_lessons#readme"
+}
