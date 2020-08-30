@@ -1,4 +1,3 @@
-var log = require('./logger')(module);
 var db = require('./db');
 db.connect();
 
@@ -10,7 +9,7 @@ function run() {
 
     tom.hello(tim);
 
-    log(db.getPhrase("Run successful"));
+    console.log(db.getPhrase("Run successful"));
 }
 
 if (module.parent) {
