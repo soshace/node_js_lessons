@@ -1,6 +1,3 @@
-var user = require('./user');
+var server = require('./server');
 
-var tim = new user.User("Tim");
-var tom = new user.User("Tom");
-
-tim.hello(tom);
+server.run();
