@@ -1,5 +1,6 @@
-var util = require('util');
+const util = require('util');
+const string = util.format("Hello %s", "Soshace");
 
-console.log("My %s %d %j", "string", 123, {test: "obj"});
+console.log(string);
 
-
+// print "Hello Soshace"

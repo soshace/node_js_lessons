@@ -1,12 +1,11 @@
-var util = require('util');
+const util = require('util');
 
-var obj = {
+const obj = {
     a: 5,
     b: 6,
-    inspect: function() {
-        return 123;
-    }
 };
 obj.self = obj;
 
 console.log(util.inspect(obj));
+
+// prints { a: 5, b: 6, self: [Circular] }
