@@ -21,7 +21,7 @@ const server2 = http.createServer(function (req, res) {
     const readFilePromise = util.promisify(fs.readFile);
 
     // use promise instead
-    fs.readFilePromise('index.html').then(data => {
+    readFilePromise('index.html').then(data => {
         res.end(data);
     }).catch(error => {
         res.status(500).end();
@@ -36,7 +36,7 @@ const server3 = http.createServer(async function (req, res) {
 
     try {
         // wait for promise to resolve
-        const data = await fs.readFilePromise('index.html');
+        const data = await readFilePromise('index.html');
         res.end(data);
     } catch (error) {
         res.status(500).end();
